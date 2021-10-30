@@ -1,0 +1,166 @@
+###############	
+#"GERENCIADOR DE TELA"
+###############	
+<Manager>:
+	Menu:
+		name:'menu'
+	Game:
+		id:game
+		name:'game'
+	
+	Conf:
+		id: conf
+		name:'conf'
+		
+	GameOver:
+		name:'gameOver'
+###############	
+#"CRIACAO DE BUTOES DE FORMA DINAMICA"
+###############	
+<MenuButton@Button>:
+	font_size:'20sp'
+###############
+#Criacao de Label de forma autonoma
+###############
+<MenuLabel@Label>:
+	font_size:'20sp'
+###############
+#"TELA DE CONFIGURAÇOES # TEM QUE DAR CONTINUIDADE"	
+###############
+<Conf>:
+	BoxLayout:
+		orientation:'vertical'
+		MenuLabel:
+			text:'Configuracões'
+			size_hint: 1.0, .2
+			
+		MenuButton:
+			text:'Voltar'
+			on_release: app.root.current='menu'
+		
+		TextInput:
+			id: inputFps
+			text:'60'
+			size_hint: 1, .2
+			font_size: '20sp'
+		MenuButton:
+			text:'Apply Fps rate'
+			on_release: root.setFps()
+		BoxLayout:
+			orientation:
+			MenuButton:
+				spacing:10
+				pading:5
+				text:'stop miusic'
+				on_release:	root.stopSound()
+			MenuButton:
+				text:'play miusic'
+				on_release:	root.playSound()
+			
+###############	
+#"TELA DE MENU"		
+###############
+<MenuButton@Button>:
+	background_normal:'background_normal.png'
+	background_down:'background_down.png'
+	border:90,  90, 90, 90
+	font_size:'40sp'
+<Menu>:
+	BoxLayout:
+		canvas:
+			Color:
+				rgba: 1, 1, 1, .3
+				
+			Rectangle:
+				size: self.size
+				pos: self.pos
+				source:'mySky.png'
+	Widget:	
+	BoxLayout:
+		padding:50
+		spacing:10
+		orientation:'vertical'
+		MenuButton:
+			text:'start'
+			
+			on_release:app.root.current = 'game'
+			
+		MenuButton:
+			text:'Exit'
+			on_release: app.stop()
+		
+		MenuButton:
+			text:'Conf'
+			on_release: app.root.current = 'conf'
+###############	
+#"CARREGANDO AS IMAGENS DO JOGADOR"
+###############	
+<Player>:
+	source:'myFlapPlayer.gif'
+###############	
+#Obstacle
+###############	
+<Obstacle>:
+	canvas:
+		Color:
+			rgba: 0, 0, 0, 1
+		Rectangle:
+			size: self.size
+			pos: self.pos
+	size_hint:None, None
+#######dsakfhnasdj####
+			
+	
+###############
+#"TELA DE GAME"
+###############
+<Game>:
+	canvas:
+		Color:
+			rgba: 1, 1, 1, .75
+		Rectangle:
+			size: self.size
+			pos: self.pos
+			source:'mySky.png'
+	FloatLayout:		
+		Player:
+			id:player
+			allow_strech: True
+			size_hint:None, None 
+			width: 20
+			height: 20
+			#size: 10, 10
+			x:root.width/20
+			y:root.height/2
+		Label:
+			id:lb
+			x:root.width/2-200
+			y:root.height/2-200
+			text: 
+			
+#"TELA DE GAME OVER"		
+<GameOver>:
+	BoxLayout:
+		canvas:
+			Color:
+				rgba: 1, 0, 0, .5
+			Rectangle:
+				source: 'mySky.png'
+				size: self.size
+				pos: self.pos
+		padding:30
+		spacing:30
+		orientation:'vertical'
+		
+		Label:
+			text:root.manager.ids.game.ids.lb.text
+		MenuButton:
+			text:'Try Again'
+			on_release: app.root.current ='game'
+		MenuButton:
+			text:'Exit Game'
+			on_release: app.stop()
+		MenuButton:
+			text:'Back to the menu'
+			on_release: app.root.current = 'menu'
+		

@@ -1,0 +1,25 @@
+[INFO   ] Logger: Record log in /storage/emulated/0/1 projetosPy/kivy whit image/.kivy/logs/kivy_20-07-30_9.txt
+[INFO   ] Kivy: v1.11.1
+[INFO   ] Kivy: Installed at "/data/data/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.8/site-packages/kivy/__init__.py"
+[INFO   ] Python: v3.8.3 (default, Jun 15 2020, 02:19:10) 
+[GCC 9.3.0]
+[INFO   ] Python: Interpreter at "/data/data/ru.iiec.pydroid3/files/arm-linux-androideabi/bin/python3"
+[INFO   ] Factory: 184 symbols loaded
+[INFO   ] Image: Providers: img_tex, img_dds, img_sdl2, img_pil, img_gif (img_ffpyplayer ignored)
+[INFO   ] Text: Provider: sdl2
+[INFO   ] Window: Provider: sdl2
+[CRITICAL] Window: Unable to find any valuable Window provider. Please enable debug logging (e.g. add -d if running from the command line, or change the log level in the config) and re-run your app to identify potential causes
+sdl2 - ValueError: can rotate only 0, 90, 180, 270 degrees
+  File "/data/data/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.8/site-packages/kivy/core/__init__.py", line 71, in core_select_lib
+    cls = cls()
+  File "/data/data/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.8/site-packages/kivy/core/window/window_sdl2.py", line 152, in __init__
+    super(WindowSDL, self).__init__()
+  File "/data/data/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.8/site-packages/kivy/core/window/__init__.py", line 957, in __init__
+    super(WindowBase, self).__init__(**kwargs)
+  File "kivy/_event.pyx", line 262, in kivy._event.EventDispatcher.__init__
+  File "kivy/properties.pyx", line 497, in kivy.properties.Property.__set__
+  File "kivy/properties.pyx", line 1526, in kivy.properties.AliasProperty.set
+  File "/data/data/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.8/site-packages/kivy/core/window/__init__.py", line 542, in _set_rotation
+    raise ValueError('can rotate only 0, 90, 180, 270 degrees')
+
+[CRITICAL] App: Unable to get a Window, abort.
